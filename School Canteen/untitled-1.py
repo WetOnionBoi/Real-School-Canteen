@@ -68,11 +68,8 @@ def restock_success(item_id):
             found_item = item
     data = dict (item = found_item)
     quantity = request.forms.get('quantity')
-    if quantity.isdigit():
-        quantity += 0
-    else:
-        quantity = int(quantity)
-        found_item.stock += quantity
+    quantity = int(quantity)
+    found_item.stock += quantity
     
     return data
 
