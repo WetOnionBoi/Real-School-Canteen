@@ -12,8 +12,8 @@ class Canteen:
         self.id = next(self._ids)
         self.name = food_name
         self.image = food_image
-        self.stock = food_stock
-        self.price = food_price
+        self.stock = food_stock               # these variables are coming from out list
+        self.price = food_price               # to create objects that are easily referenced
         self.total = food_total
         
     #Test Data
@@ -23,20 +23,20 @@ food =    [
           Canteen("Ham and Cheese Sandwiches", "hamdiggity.jpg", 4, "$5", 0)
           ]
 
-@route("/")
+@route("/")     #My Websites index
 @view("index")
 def index():
     #need this function to attach the decorators.
     pass
 
-@route("/menu")
+@route("/menu")   # Creates a menu for my page.
 @view("menu")
 def Canteen():
-    data = dict (menu_list = food)
+    data = dict (menu_list = food)     #Creates a dictionary for the list of food I need in my menu
     return data
 
-@route('/purchase-success/<item_id>', method = 'POST')
-@view('purchase-success')
+@route('/purchase-success/<item_id>', method = 'POST')    #This function will 
+@view('purchase-success')                                 #
 def purchase_success(item_id):
     item_id = int(item_id)
     found_item = None   
