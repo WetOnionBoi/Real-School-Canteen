@@ -68,9 +68,9 @@ def restock_success(item_id):                #This function adds one to a chosen
         if item.id == item_id:         # Matches chosen item to item in food list
             found_item = item            
     data = dict (item = found_item)
-    quantity = request.forms.get('quantity')     # gets the quantity that is wanted to add to stock from
-    quantity = int(quantity)                     # A form in my html
-    found_item.stock += quantity             # Adds quantity to stock
+    quantity = request.forms.get('quantity')     # gets the quantity that is wanted to add to stock 
+    quantity = int(quantity)                     # from a form in my html
+    found_item.stock += quantity     # Adds users chosen quantity to stock
     
     return data
 
