@@ -46,7 +46,7 @@ def purchase_success(item_id):                            # item and send my use
             found_item  = item         
     data = dict(item = found_item)       
     found_item.stock -= 1   # minus 1 from the amount of items in stock
-    found_item.total += 1    # adds one if the user wanted to restock
+    found_item.total += 1    # adds one to the total amount of stock sold
     return data 
     
 @route('/picture/<filename>')                         # function exists so that I can 
@@ -61,8 +61,8 @@ def restock():                              # A basic restock page for people ad
 
 @route('/restock/<item_id>', method = 'POST')      
 @view ('restock-success')
-def restock_success(item_id):                #This function adds one to a chosen stock and sends        
-    item_id = int(item_id)                    #users to a restock page
+def restock_success(item_id):                # This function adds one to a chosen stock and sends        
+    item_id = int(item_id)                    # users to a restock page
     found_item = None
     for item in food:
         if item.id == item_id:         # Matches chosen item to item in food list
@@ -71,7 +71,6 @@ def restock_success(item_id):                #This function adds one to a chosen
     quantity = request.forms.get('quantity')     # gets the quantity that is wanted to add to stock 
     quantity = int(quantity)                     # from a form in my html
     found_item.stock += quantity     # Adds users chosen quantity to stock
-    
     return data
 
 run(host='0.0.0.0', port = 8080, reloader=True, debug=True)   # Creates localhost for website
